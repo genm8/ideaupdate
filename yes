@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Idea - Decisions</title>
+    <style>
+        #show1 {
+            display: none;
+        }
+
+        #show2 {
+            display: none;
+        }
+        .hiddenBut {
+            display: none;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <h1>You wake in the middle of a forest...</h1>
+    <button id="whatTo" onclick="hideButtons();">What's your first choice?</button>
+    
+    <button onclick="standUp();" id="show1">Stand Up</button>
+    <h2 id="space2"></h2>
+    <button id="startAgn" onclick="startAgain();" class="hiddenBut">Start Again.</button>
+    <button onclick="lookAround();" id="show2">Look around</button>
+    <h2 id="space1"></h2>
+    
+    <button  onclick="continueFirst();" class="hiddenBut" id="choice1Cont">continue</button>
+       
+    <button id="runOpt" class="hiddenBut" onclick="plyRuns();">Make a run to the path to the left. </button>
+    <h2 id="space3"></h2>
+    <button id="continue2" onclick="continueSecond();" class="hiddenBut">Continue</button>
+    
+    <button id="crawlOpt" class="hiddenBut" onclick="plyCrawls();">Crawl slowly to the path.</button>
+    <h2 id="space4"></h2>
+            <button id="continue3" onclick="continueCrawl();" class="hiddenBut">Continue</button>
+
+    <button class="hiddenBut" onclick="hide();" id="hide">Hide behind the tree</button>
+    <h2 id="space5"></h2>
+    
+    <button class="hiddenBut" onclick="keepGoing();" id="keepGoing">Keep going down the path</button>
+    <h2 id="space6"></h2>
+    
+     
+          <form action=""  id="formForCalc" class="hiddenBut" onsubmit="return false">
+          <input type="text" id="input">
+          <input type="text" id="secondInput"> =
+					 <h2 id="output"></h2>
+          <input type="submit" onclick="calcFunction();">
+      </form>
+      <h2 id="space7"></h2>
+    
+    <button id="calContinue" class="hiddenBut" onclick="calContinue();">continue</button>
+      <h2 id="pondTime"></h2>
+      
+      <button id="approach" class="hiddenBut" onclick="approach();">Approach</button>
+      <h2 id="space9"></h2>
+      
+      <button id="stayOnPath" class="hiddenBut" onclick="stayOnPath();">Keep going down the path</button>
+      <h2 id="space10"></h2>
+      <form onsubmit="return false" id="gate">
+      <input type="text" class="hiddenBut" id="keyHole" required >
+      <input type="submit" class="hiddenBut" id="submitKey" onclick="keyVerify();" >
+       </form>
+       <h2 id="space11"></h2>
+
+			 <button id="finish" class="hiddenBut" onclick="finishPathOne();">Finish</button>
+       <script>
+        var name = prompt("Enter your name stranger.");
+//           while (name == ""){
+//                prompt("IDENTIFY YOURSELF I say!"); 
+//              };
+            
+               
+
+        function hideButtons() {
+            document.getElementById("show1").style = "display: block";
+            document.getElementById("show2").style = "display: block";
+            document.getElementById("whatTo").style = "display: none";
+        }
+
+        function lookAround() {
+            document.getElementById("space1").innerHTML = "You wake up laying underneath a bush. You look around and spot a huge bear on the far right. There's a walking path to left.";
+            document.getElementById("show1").style = "display: none";
+            document.getElementById("show2").style = "display: none";
+            document.getElementById("choice1Cont").style = "display: block"; 
+        }
+
+        function standUp() {
+            document.getElementById("space2").innerHTML = "You stand up from the bush you were laying in and a nearby bear spots you. You are now dead. Better luck next time.";
+            document.getElementById("show1").style = "display: none";
+            document.getElementById("show2").style = "display: none";
+            document.getElementById("startAgn").style = "display: block";
+        }
+        
+        function startAgain() {
+            document.getElementById("whatTo").style = "display: block";
+              document.getElementById("space2").style = "display: none";
+            document.getElementById("startAgn").style = "display: none";
+        }
+
+        function continueFirst() {
+            document.getElementById("runOpt").style = "display: block";
+            document.getElementById("crawlOpt").style = "display: block";
+        }
+        
+        function plyRuns() {
+            document.getElementById("space3").innerHTML = "You run to the path, the bear doesn't spot you. There is a big tree."
+            document.getElementById("runOpt").style = "display: none";
+            document.getElementById("choice1Cont").style = "display: none";
+            document.getElementById("crawlOpt").style = "display: none";
+            document.getElementById("continue2").style = "display: block";
+        }
+        
+        function plyCrawls() {
+            document.getElementById("space4").innerHTML = "You crawl all the way to the path, you have wasted your time and energy, coward. You do spot a big tree.";
+            document.getElementById("runOpt").style = "display: none";
+            document.getElementById("choice1Cont").style = "display: none";
+            document.getElementById("space3").style = "display: none";
+            document.getElementById("crawlOpt").style = "display: none";
+            document.getElementById("continue3").style = "display: block";
+
+        }
+           
+        function continueCrawl() {
+            document.getElementById("hide").style = "display: block";
+            document.getElementById("keepGoing").style = "display: block";
+        }
+        
+        function continueSecond(){
+            document.getElementById("space1").style = "display: none";
+            document.getElementById("space4").style = "display: none";
+            document.getElementById("continue2").style = "display: none";
+            document.getElementById("hide").style = "display: block";
+            document.getElementById("keepGoing").style = "display: block";
+        }
+        function hide() {
+            document.getElementById("space5").innerHTML = "You spot a shiny object in the ground. It's a magical key. When you touch it light comes out of it... ";
+            document.getElementById("hide").style = "display: none";
+            document.getElementById("keepGoing").style = "display: none";
+            document.getElementById("space1").style = "display: none";
+            document.getElementById("space3").style = "display: none";
+            document.getElementById("space4").style = "display: none";
+            document.getElementById("continue3").style = "display: none";
+
+        }
+        
+        function keepGoing() {
+            document.getElementById("space6").innerHTML = "You continue walking and notice that the College Board required you to do Math. So, " + name + " ,use this makeshift calculator so that you can get  points for ColLeGe.";
+            document.getElementById("formForCalc").style = "display: block";
+             document.getElementById("hide").style = "display: none";
+            document.getElementById("keepGoing").style = "display: none";
+        }
+           var keyToGate = "";
+        function calcFunction() {
+            var first = document.getElementById("input").value;
+            var second = document.getElementById("secondInput").value;
+            var firstInput = parseFloat(first);
+            var secondInput = parseFloat(second);
+            
+            var sum = document.getElementById("output").innerHTML = firstInput + secondInput;
+            keyToGate = firstInput + secondInput;
+            
+                /* KEY TO GATE IS LOCAL STILL, FIX IT SO IT HAS A GLOBAL SCOPE  AND YOU CAN USE IT TO LET THE PLAYER OPEN THE GATE!!!!*/
+            
+            document.getElementById("space7").innerHTML = "Congrats, now you have a useless number because sometimes things are useless, and that's okay.";
+            document.getElementById("calContinue").style = "display: block";
+        }
+
+        function calContinue() {
+            document.getElementById("space1").style = "display: none";
+            document.getElementById("space3").style = "display: none";
+            document.getElementById("space4").style = "display: none";
+            document.getElementById("space6").style = "display: none";
+            document.getElementById("continue3").style = "display: none";
+            document.getElementById("formForCalc").style = "display: none";
+            document.getElementById("space7").style = "display: none";
+            document.getElementById("calContinue").style = "display: none";
+            document.getElementById("keepGoing").style = "display: none";
+            document.getElementById("pondTime").innerHTML = "Hopefully that worked. You spot a very beautiful pond. ";
+            document.getElementById("approach").style = "display: block";
+            document.getElementById("stayOnPath").style = "display: block";
+            
+        }  
+           
+        function approach() {
+            document.getElementById("space9").innerHTML = "The end is near. "
+        } 
+        
+        function stayOnPath() {
+            document.getElementById("approach").style = "display: none";
+            document.getElementById("stayOnPath").style = "display: none";
+            document.getElementById("pondTime").style = "display: none";
+            document.getElementById("space10").innerHTML = "As you walk further down the path you see a sign. The sign reads \"Remember the number?\" As you look further down you spot a gate. As you get closer you see a  shiny set of numbers all set to 0. ";
+            document.getElementById("keyHole").style = "display: block";
+            document.getElementById("submitKey").style = "display: block";
+        }   
+           
+        function villageVictory() {
+            document.getElementById("space11").innerHTML = "The gate opens to a beautiful village with lots of helpful people who can help you back home. Congrats " + name +  "you have survived the forest. ";
+				}  
+				
+				function keyVerify() {
+					 var firstInputKey = document.getElementById("keyHole").value;
+					 var actualInput = parseFloat(firstInputKey);
+					 if(actualInput != keyToGate) {
+						 alert("That is incorrect!");
+					 } else {
+						 document.getElementById("space11").style = "display: block";
+					 }
+        }   
+    </script>
+</body></html>
